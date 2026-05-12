@@ -23,14 +23,14 @@ class Bill{
 }
 
 abstract class PhoneCall {
-    int durationTime; // Dado que el teimpo de las llamadas se cobra por minuto durationTime = Minutos de llamada
+    int durationTime; // duration time will be modeled in minutes so it's easier to calculate the fee 
 
-    public abstract double calculateCost();
+    public abstract double calculateCost(); // i use polimorfism so i name it here and i define by cases in the calls 
     
 }
 
 class LocalCall extends PhoneCall {
-    int startTime; // Ya que durationTime esta en minutos esto tambien lo paso a minutos asi tenemos todo en la misma unidad de tiempo
+    int startTime; // Because durationTime is model in minutes i use the same time unit.
     boolean isWeekend;
     
     @Override 
@@ -48,7 +48,7 @@ class LocalCall extends PhoneCall {
 
 class InternationalCall extends PhoneCall {
     String country; 
-    double ratePerMinute; 
+    double ratePerMinute; // each contry has it's own rate 
 
     @Override 
     public double calculateCost(){
@@ -59,7 +59,7 @@ class InternationalCall extends PhoneCall {
 
 class NationalCall extends PhoneCall {
     String city;
-    double ratePerMinute;
+    double ratePerMinute; // each city has it's own rate 
 
     @Override 
     public double calculateCost(){
