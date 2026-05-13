@@ -44,11 +44,11 @@ class LocalCall extends PhoneCall {
         int peakStart = 480;
         int peakFinish = 1200;
 
-        int overlapStart;
+        int overlapStart; //OverlapStart will be the higest number 
         if(startTime > peakStart) overlapStart = startTime;
         else overlapStart = peakStart;
 
-        int overlapEnd; 
+        int overlapEnd; //OverlapStart will be the lowest number 
         if( endTime < peakFinish) overlapEnd = endTime;
         else overlapEnd = peakFinish; 
 
