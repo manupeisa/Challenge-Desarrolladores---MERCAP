@@ -41,7 +41,7 @@ public class Test {
         //Bill 
         Bill bill = new Bill(100, List.of(localPeak, localOffPeak, localWeekend, international, national));
         System.out.println("---MonthlyFee---");
-        System.err.println("Total: (Expected: 229,1)" + bill.calculateFee());
+        System.out.println("Total: (Expected: 229,1)" + bill.calculateFee());
 
     }
 }
