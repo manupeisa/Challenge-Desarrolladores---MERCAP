@@ -35,16 +35,33 @@ class LocalCall extends PhoneCall {
     
     @Override 
     public double calculateCost(){
-        if (!isWeekend && startTime >= 480 && startTime <= 1200 ){
-            return durationTime * 0.20; 
+        
+        if (isWeekend){
+            return durationTime * 0.10; 
 
         }
-        else{
-            return durationTime * 0.10;
-        }
+        int endTime = startTime + durationTime ;
+        int peakStart = 480;
+        int peakFinish = 1200;
+
+        int overlapStart;
+        if(startTime > peakStart) overlapStart = startTime;
+        else overlapStart = peakStart;
+
+        int overlapEnd; 
+        if( endTime < peakFinish) overlapEnd = endTime;
+        else overlapEnd = peakFinish; 
+
+        int peakMinutes;
+        if (overlapEnd > overlapStart) peakMinutes = overlapEnd - overlapStart;
+        else peakMinutes = 0;
+
+        int offPeakMinutes = durationTime - peakMinutes;
+        return peakMinutes * 0.20 + offPeakMinutes * 0.10; 
+
     }
 }
-
+//Start = 420 && duration = 80 endtime = 500 -> 480 - 420 = 60 * 0.10 + 500 - 480 = 20 * 0.20
 
 class InternationalCall extends PhoneCall {
     String country; 
