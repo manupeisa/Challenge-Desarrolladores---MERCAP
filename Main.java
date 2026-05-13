@@ -52,9 +52,9 @@ class LocalCall extends PhoneCall {
         if( endTime < peakFinish) overlapEnd = endTime;
         else overlapEnd = peakFinish; 
 
-        int peakMinutes;
+        int peakMinutes; 
         if (overlapEnd > overlapStart) peakMinutes = overlapEnd - overlapStart;
-        else peakMinutes = 0;
+        else peakMinutes = 0; //If it's off peak peakminutes will be 0 
 
         int offPeakMinutes = durationTime - peakMinutes;
         return peakMinutes * 0.20 + offPeakMinutes * 0.10; 
